@@ -2,30 +2,39 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('apikeys', {
+    await queryInterface.createTable('Orders', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      client_id: {
+        type: Sequelize.INTEGER
+      },
+      operateur_id: {
+        type: Sequelize.INTEGER
+      },
+      description: {
+        type: Sequelize.TEXT
+      },
+      notes: {
         type: Sequelize.STRING
       },
-      typeUser: {
+      place_of_care: {
         type: Sequelize.STRING
       },
-      token: {
+      place_of_delivery: {
         type: Sequelize.STRING
       },
-      init: {
-        type: Sequelize.DATE
-      },
-      exp: {
-        type: Sequelize.DATE
-      },
-      statut: {
+      order_status: {
         type: Sequelize.STRING
+      },
+      contact: {
+        type: Sequelize.STRING
+      },
+      delete: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -38,6 +47,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('apikeys');
+    await queryInterface.dropTable('Orders');
   }
 };

@@ -2,44 +2,29 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('clients', {
+    await queryInterface.createTable('UserTokens', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      uid: {
-        type: Sequelize.STRING
+      token: {
+        type: Sequelize.TEXT
       },
-      name: {
-        type: Sequelize.STRING
+      expiration: {
+        type: Sequelize.DATE
       },
-      lastname: {
-        type: Sequelize.STRING
+      user_id: {
+        type: Sequelize.INTEGER
       },
-      username: {
-        type: Sequelize.STRING
-      },
-      email: {
-        type: Sequelize.STRING
-      },
-      numero: {
-        type: Sequelize.STRING
-      },
-      password: {
-        type: Sequelize.STRING
-      },
-      statut: {
-        type: Sequelize.STRING
+      apikey_id: {
+        type: Sequelize.INTEGER
       },
       enable: {
         type: Sequelize.INTEGER
       },
       delete: {
-        type: Sequelize.INTEGER
-      },
-      point: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -53,6 +38,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('clients');
+    await queryInterface.dropTable('UserTokens');
   }
 };

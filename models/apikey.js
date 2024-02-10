@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class apikey extends Model {
+  class ApiKey extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,16 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  apikey.init({
-    userId: DataTypes.STRING,
-    typeUser: DataTypes.STRING,
-    token: DataTypes.STRING,
-    init: DataTypes.DATE,
-    exp: DataTypes.DATE,
-    statut: DataTypes.STRING,
+  ApiKey.init({
+    code: DataTypes.STRING,
+    key: DataTypes.STRING,
+    application_id: DataTypes.INTEGER,
+    description: DataTypes.STRING,
+    enable: DataTypes.INTEGER,
+    delete: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'apikey',
+    modelName: 'ApiKey',
   });
-  return apikey;
+  return ApiKey;
 };
